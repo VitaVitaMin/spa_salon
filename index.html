@@ -111,7 +111,7 @@
         document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         document.querySelector(btn.dataset.target)
-                .scrollIntoView({ behavior: 'smooth', block: 'center' });
+                .scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
     const obs = new IntersectionObserver(entries => {
