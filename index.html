@@ -89,7 +89,6 @@
     <form id="bookingForm">
       <input name="name" type="text" placeholder="Ваше имя" required />
       <input name="phone" type="tel" placeholder="Телефон" required />
-      <input name="email" type="email" placeholder="Email" required />
       <textarea name="message" placeholder="Комментарий" rows="4"></textarea>
       <button type="submit">
         <span id="btnText">Отправить заявку</span>
@@ -160,7 +159,7 @@
 
       const data = new FormData(form);
       const msg  = `📩 *Новая заявка на массаж:*\n👤 Имя: ${data.get('name')}\n📞 Телефон: ${data.get('phone')}`
-                 + `\n✉️ Email: ${data.get('email')}\n💬 Комментарий: ${data.get('message')}`;
+                 + `💬 Комментарий: ${data.get('message')}`;
 
       try {
         const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
