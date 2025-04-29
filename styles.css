@@ -1,0 +1,75 @@
+:root {
+  --secondary: #e9c46a;
+  --accent:    #f4a261;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #1f2a30;
+  color: #f0f0f0;
+  overflow-x: hidden;
+}
+
+/* Жестко закреплённое меню */
+#page-header {
+  position: sticky; top: 0; left: 0; right: 0;
+  z-index: 50;
+}
+#page-header.hidden {
+  transform: translateY(-100%);
+  transition: transform .3s ease;
+}
+
+/* Навигация */
+.nav-link {
+  position: relative;
+  padding: .5rem 1rem;
+  background: #2a9d8f;
+  border-radius: 9999px;
+  color: #fff;
+  font-weight: 500;
+  transition: background .3s, transform .2s;
+}
+.nav-link:hover {
+  background: var(--secondary);
+  transform: translateY(-2px);
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 50%;
+  transform: translateX(-50%);
+  width: 50%; height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Мобильное меню */
+#mobile-nav a {
+  border-bottom: 1px solid #333;
+}
+
+/* Секции выравнены по центру */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Кнопка CTA */
+section a {
+  will-change: transform;
+}
+
+/* Responsive Images через <picture> */ 
+picture img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Форма */
+input, textarea {
+  outline: none;
+}
