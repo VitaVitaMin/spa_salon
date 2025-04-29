@@ -7,252 +7,68 @@
   <!-- Tailwind CSS Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Theme variables */
-    :root {
-      --primary: #2a9d8f;
-      --secondary: #e9c46a;
-      --accent: #f4a261;
-      --dark: #264653;
-    }
+    :root { --primary: #2a9d8f; --secondary: #e9c46a; --accent: #f4a261; --dark: #264653; }
     html, body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       scroll-behavior: smooth;
       scroll-snap-type: y mandatory;
-      height: 100%;
-      overflow-y: scroll;
-      background: var(--dark);
-      color: #f0f0f0;
+      height: 100%; overflow-y: scroll;
+      background: var(--dark); color: #f0f0f0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-
-    /* Navigation */
-    nav {
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(12px);
-      background: rgba(38, 70, 83, 0.85);
-      z-index: 50;
+    nav { position: sticky; top: 0; backdrop-filter: blur(12px); background: rgba(38,70,83,0.85); z-index: 50; }
+    nav ul { display: flex; justify-content: center; gap: 2rem; padding: 1rem; margin:0; list-style:none; flex-wrap:wrap; }
+    nav .nav-btn { position:relative; padding:.5rem 1.5rem; background:linear-gradient(135deg,var(--primary),var(--secondary)); border-radius:9999px; color:#fff; font-weight:600; cursor:pointer; transition:transform .3s,box-shadow .3s; overflow:hidden; white-space:nowrap; }
+    nav .nav-btn:hover { transform: translateY(-3px) scale(1.05); box-shadow:0 8px 16px rgba(0,0,0,0.4); }
+    nav .active::after { content:''; position:absolute; bottom:-4px; left:50%; transform:translateX(-50%); width:50%; height:3px; background:var(--accent); border-radius:2px; }
+    /* Burger */
+    #navToggle { display:none; position:absolute; top:10px; right:20px; background:none; border:none; cursor:pointer; z-index:60; }
+    #navToggle span { display:block; width:25px; height:3px; margin:5px; background:#fff; border-radius:2px; transition:0.3s; }
+    @media(max-width:480px) {
+      #navToggle { display:block; }
+      nav ul { display:none; flex-direction:column; background:rgba(38,70,83,0.9); width:100%; }
+      nav ul.open { display:flex; }
     }
-    nav ul {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      padding: 1rem;
-      margin: 0;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-    nav .nav-btn {
-      position: relative;
-      padding: 0.5rem 1.5rem;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      border-radius: 9999px;
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-    nav .nav-btn:hover {
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-    }
-    nav .active::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 50%;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 2px;
-    }
-
-    /* Sections */
-    section {
-      position: relative;
-      scroll-snap-align: center;
-      min-height: 100vh;
-      padding: 6rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    /* Hero */
-    #hero {
-      background: linear-gradient(rgba(38,70,83,0.6), rgba(38,70,83,0.6)), url('img/hero.jpg');
-      background-size: cover;
-      background-position: center;
-      text-align: center;
-    }
-    #hero .hero-content {
-      background: rgba(0,0,0,0.5);
-      padding: 3rem;
-      border-radius: 1rem;
-      max-width: 90%;
-    }
-    #hero h1 {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-      color: var(--secondary);
-    }
-    #hero p {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-    }
-
-    /* Services */
-    #services {
-      background: var(--dark);
-    }
-    #services h2 {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      position: relative;
-      color: var(--secondary);
-    }
-    #services h2::after {
-      content: '';
-      position: absolute;
-      bottom: -0.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 4px;
-      background: var(--primary);
-      border-radius: 2px;
-    }
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      width: 100%;
-      max-width: 1200px;
-    }
-    .service-card {
-      background: #fff;
-      color: #333;
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-      transition: transform 0.4s;
-      display: flex;
-      flex-direction: column;
-    }
-    .service-card:hover {
-      transform: translateY(-10px) scale(1.03);
-    }
-    .service-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem;
-      box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
-    }
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin: 1rem;
-      color: var(--dark);
-    }
-    .service-card p {
-      font-size: 1rem;
-      margin: 0 1rem 1rem;
-      flex-grow: 1;
-    }
-
-    /* Booking Form */
-    #contact {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-    }
-    #contact h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: white;
-      text-align: center;
-    }
-    #bookingForm {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      max-width: 400px;
-    }
-    #bookingForm input,
-    #bookingForm textarea {
-      padding: 1rem;
-      border: none;
-      border-radius: 0.75rem;
-      font-size: 1rem;
-      outline: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    #bookingForm input:focus,
-    #bookingForm textarea:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-    }
-    #bookingForm button {
-      padding: 1rem;
-      background: linear-gradient(135deg, var(--secondary), var(--accent));
-      font-weight: 600;
-      border: none;
-      border-radius: 9999px;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    #bookingForm button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-    }
-    #statusMsg {
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 1.125rem;
-      min-height: 1.5rem;
-      color: #fff;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      #hero h1 { font-size: 2.5rem; }
-      #hero p { font-size: 1rem; }
-      nav ul { gap: 1rem; }
-      nav .nav-btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
-      .service-card img { height: 150px; }
-      #bookingForm { max-width: 90%; }
-    }
-    @media (max-width: 480px) {
-      nav ul { flex-direction: column; align-items: stretch; }
-      sectionsnap\_hack:;
-    }
+    section { position:relative; scroll-snap-align:center; min-height:100vh; padding:6rem 1rem; display:flex; align-items:center; justify-content:center; flex-direction:column; }
+    #hero { background:linear-gradient(rgba(38,70,83,0.6),rgba(38,70,83,0.6)), url('img/hero.jpg'); background-size:cover; background-position:center; text-align:center; }
+    #hero .hero-content { background:rgba(0,0,0,0.5); padding:3rem; border-radius:1rem; max-width:90%; }
+    #hero h1 { font-size:4rem; margin-bottom:1rem; color:var(--secondary); }
+    #hero p { font-size:1.25rem; margin-bottom:2rem; }
+    #services { background:var(--dark); }
+    #services h2 { font-size:3rem; margin-bottom:2rem; position:relative; color:var(--secondary); }
+    #services h2::after { content:''; position:absolute; bottom:-0.5rem; left:50%; transform:translateX(-50%); width:100px; height:4px; background:var(--primary); border-radius:2px; }
+    .service-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; width:100%; max-width:1200px; }
+    .service-card { background:#fff; color:#333; border-radius:1rem; overflow:hidden; box-shadow:0 10px 20px rgba(0,0,0,0.2); transition:transform .4s; display:flex; flex-direction:column; }
+    .service-card:hover { transform:translateY(-10px) scale(1.03); }
+    .service-card img { width:100%; height:200px; object-fit:cover; border-top-left-radius:1rem; border-top-right-radius:1rem; box-shadow:inset 0 0 20px rgba(0,0,0,0.1); }
+    .service-card h3 { font-size:1.5rem; margin:1rem; color:var(--dark); }
+    .service-card p { font-size:1rem; margin:0 1rem 1rem; flex-grow:1; }
+    #contact { background:linear-gradient(135deg,var(--primary),var(--accent)); color:#888888; }
+    #contact h2 { font-size:2.5rem; margin-bottom:2rem; color:#f5f5f5; text-align:center; }
+    #bookingForm { display:flex; flex-direction:column; gap:1rem; width:100%; max-width:400px; }
+    #bookingForm input, #bookingForm textarea { padding:1rem; border:none; border-radius:.75rem; font-size:1rem; outline:none; color:#333333; }
+    #bookingForm button { padding:1rem; background:linear-gradient(135deg,var(--secondary),var(--accent)); font-weight:600; border:none; border-radius:9999px; cursor:pointer; transition:transform .3s,box-shadow .3s; display:flex; align-items:center; justify-content:center; }
+    #bookingForm button:hover { transform:translateY(-3px); box-shadow:0 8px 16px rgba(0,0,0,0.3); }
+    #statusMsg { margin-top:1rem; text-align:center; font-size:1.125rem; min-height:1.5rem; color:#fff; }
+    @media(max-width:768px) { #hero h1{font-size:2.5rem;} #hero p{font-size:1rem;} nav .nav-btn{padding:.5rem 1rem;font-size:.9rem;} .service-card img{height:150px;} #bookingForm{max-width:90%;} }
   </style>
 </head>
 <body>
-  <!-- Навигация -->
   <nav>
-    <ul>
-      <li><button data-target="#hero" class="nav-btn">Главная</button></li>
-      <li><button data-target="#services" class="nav-btn">Услуги</button></li>
-      <li><button data-target="#contact" class="nav-btn">Запись</button></li>
+    <button id="navToggle" type="button"><span></span><span></span><span></span></button>
+    <ul id="navList">
+      <li><button type="button" data-target="#hero" class="nav-btn active">Главная</button></li>
+      <li><button type="button" data-target="#services" class="nav-btn">Услуги</button></li>
+      <li><button type="button" data-target="#contact" class="nav-btn">Запись</button></li>
     </ul>
   </nav>
-
-  <!-- Hero -->
   <section id="hero">
     <div class="hero-content">
       <h1>Расслабьтесь с нами</h1>
       <p>Профессиональный SPA и массаж у вас на дому</p>
-      <button data-target="#services" class="nav-btn">Узнать больше</button>
+      <button type="button" data-target="#services" class="nav-btn">Узнать больше</button>
     </div>
   </section>
-
-  <!-- Services -->
   <section id="services">
     <h2>Наши услуги</h2>
     <div class="service-grid">
@@ -273,8 +89,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Booking -->
   <section id="contact">
     <h2>Записаться сейчас</h2>
     <form id="bookingForm">
@@ -282,7 +96,86 @@
       <input name="phone" type="tel" placeholder="Телефон" required />
       <input name="email" type="email" placeholder="Email" required />
       <textarea name="message" placeholder="Комментарий" rows="4"></textarea>
-      <button type="submit">Отправить заявку</button>
+      <button type="submit">
+        <span id="btnText">Отправить заявку</span>
+        <span id="spinner" style="display:none; margin-left:0.5rem; width:1rem; height:1rem; border:2px solid #fff; border-top-color:transparent; border-radius:50%; animation:spin 1s linear infinite;"></span>
+      </button>
     </form>
     <p id="statusMsg"></p>
   </section>
+  <script>
+    const BOT_TOKEN = '7577231841:AAFuxU7qKica-U5CVTl684kigyjuE92uzEg';
+    const CHAT_ID = '1459592080';
+
+    // Nav toggle
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navList').classList.toggle('open');
+    });
+
+    // Scroll on button click
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = document.querySelector(btn.dataset.target);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+
+    // Intersection Observer for active nav
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const btn = document.querySelector(`.nav-btn[data-target="#${entry.target.id}"]`);
+        if (btn) btn.classList.toggle('active', entry.isIntersecting);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+
+    // Form submission
+    const form = document.getElementById('bookingForm');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const statusMsg = document.getElementById('statusMsg');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      form.querySelector('button').disabled = true;
+      btnText.style.display = 'none';
+      spinner.style.display = 'inline-block';
+      statusMsg.textContent = '';
+
+      const data = new FormData(form);
+      const message = `📩 *Новая заявка на массаж:*
+👤 Имя: ${data.get('name')}
+📞 Телефон: ${data.get('phone')}
+✉️ Email: ${data.get('email')}
+💬 Комментарий: ${data.get('message')}`;
+
+      try {
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
+        });
+        const result = await res.json();
+        if (result.ok) {
+          statusMsg.style.color = '#0f0';
+          statusMsg.textContent = 'Заявка отправлена! Скоро свяжемся.';
+          form.reset();
+        } else {
+          throw new Error(result.description);
+        }
+      } catch (error) {
+        statusMsg.style.color = '#f00';
+        statusMsg.textContent = 'Ошибка отправки. Попробуйте ещё.';
+        console.error(error);
+      } finally {
+        form.querySelector('button').disabled = false;
+        btnText.style.display = 'inline';
+        spinner.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
