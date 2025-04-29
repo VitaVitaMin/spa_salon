@@ -158,8 +158,8 @@
       status.textContent      = '';
 
       const data = new FormData(form);
-      const msg  = `📩 *Новая заявка на массаж:*\n👤 ФИ: ${data.get('name')}\n📞 Телефон: ${data.get('phone')}`
-                 + `/n💬 Комментарий: ${data.get('message')}`;
+      const msg  = `📩 *Новая заявка на массаж:*\n👤 ФИ: ${data.get('name')}\n📞 Телефон: ${data.get('phone')}\n💬 Комментарий: ${data.get('message')}`;
+
 
       try {
         const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
