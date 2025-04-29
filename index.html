@@ -87,7 +87,7 @@
   <section id="contact">
     <h2>Записаться сейчас</h2>
     <form id="bookingForm">
-      <input name="name" type="text" placeholder="Ваше имя" required />
+      <input name="name" type="text" placeholder="Ваше Фамилия Имя" required />
       <input name="phone" type="tel" placeholder="Телефон" required />
       <textarea name="message" placeholder="Комментарий" rows="4"></textarea>
       <button type="submit">
@@ -158,7 +158,7 @@
       status.textContent      = '';
 
       const data = new FormData(form);
-      const msg  = `📩 *Новая заявка на массаж:*\n👤 Имя: ${data.get('name')}\n📞 Телефон: ${data.get('phone')}`
+      const msg  = `📩 *Новая заявка на массаж:*\n👤 ФИ: ${data.get('name')}\n📞 Телефон: ${data.get('phone')}`
                  + `/n💬 Комментарий: ${data.get('message')}`;
 
       try {
