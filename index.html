@@ -4,35 +4,111 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SPA Massage & SPA</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CSS Production Build (bundle via Tailwind CLI / PostCSS) -->
+  <link rel="stylesheet" href="/css/tailwind.min.css">
   <!-- AOS Scroll Animations -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <!-- Inputmask for phone formatting -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js"></script>
-  <!-- Lottie Player -->
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" integrity="sha512-GY2vQ0j85YQKSx8jxsgRuvnM2jtV+6G7o9MdLdDCZ3unNH6GfNwrZeg6OaUzYW+iwpZvZ1X3oGJacf + vTLT2RQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    :root { --primary: #2a9d8f; --secondary: #e9c46a; --accent: #f4a261; --dark: #264653; }
-    html, body { margin:0; padding:0; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:var(--dark); color:#f0f0f0; scroll-behavior:smooth; }
-    nav { position:sticky; top:0; backdrop-filter:blur(12px); background:rgba(38,70,83,0.85); z-index:50; }
-    nav ul { display:flex; justify-content:center; gap:2rem; padding:1rem; margin:0; list-style:none; flex-wrap:wrap; }
-    .nav-btn { position:relative; padding:.5rem 1.5rem; background:linear-gradient(135deg,var(--primary),var(--secondary)); border-radius:9999px; color:#fff; font-weight:600; cursor:pointer; transition:transform .3s,box-shadow .3s; }
-    .nav-btn:hover { transform:translateY(-3px) scale(1.05); box-shadow:0 8px 16px rgba(0,0,0,0.4); }
-    .active::after { content:''; position:absolute; bottom:-4px; left:50%; transform:translateX(-50%); width:50%; height:3px; background:var(--accent); border-radius:2px; }
-    #navToggle { display:none; position:absolute; top:10px; right:20px; background:none; border:none; cursor:pointer; z-index:60; }
-    #navToggle span { display:block; width:25px; height:3px; margin:5px; background:#fff; border-radius:2px; transition:.3s; }
-    @media(max-width:480px){#navToggle{display:block;}nav ul{display:none;flex-direction:column;background:rgba(38,70,83,0.9);width:100%;}nav ul.open{display:flex;}}
-    section{position:relative;min-height:100vh;padding:6rem 1rem;display:flex;align-items:center;justify-content:center;flex-direction:column;}
-    /* Curved SVG backgrounds */
-    .wave { position:absolute; width:100%; height:100px; left:0; }
-    /* Form error style */
-    .error { border:2px solid #f00 !important; }
+    :root {
+      --primary: #2a9d8f;
+      --secondary: #e9c46a;
+      --accent: #f4a261;
+      --dark: #264653;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--dark);
+      color: #f0f0f0;
+      scroll-behavior: smooth;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(38,70,83,0.85);
+      z-index: 50;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+      margin: 0;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-btn {
+      position: relative;
+      padding: .5rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 9999px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .nav-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    }
+    .active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    #navToggle {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 60;
+    }
+    #navToggle span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      margin: 5px;
+      background: #fff;
+      border-radius: 2px;
+      transition: .3s;
+    }
+    @media(max-width:480px) {
+      #navToggle { display: block; }
+      nav ul { display: none; flex-direction: column; background: rgba(38,70,83,0.9); width: 100%; }
+      nav ul.open { display: flex; }
+    }
+    section {
+      position: relative;
+      min-height: 100vh;
+      padding: 6rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .wave {
+      position: absolute;
+      width: 100%;
+      height: 100px;
+      left: 0;
+    }
+    .error {
+      border: 2px solid #f00 !important;
+    }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav>
     <button id="navToggle"><span></span><span></span><span></span></button>
     <ul id="navList">
@@ -42,24 +118,19 @@
     </ul>
   </nav>
 
-  <!-- Hero Section -->
   <section id="hero" class="relative text-center text-white">
-    <!-- Curved background top -->
     <svg class="wave top-0" viewBox="0 0 1440 100"><path fill="#264653" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path></svg>
     <div class="z-10 hero-content bg-black bg-opacity-50 p-8 rounded-xl" data-aos="fade-up">
       <h1 class="text-5xl md:text-6xl font-bold mb-4 text-secondary">Расслабьтесь с нами</h1>
       <p class="text-lg md:text-xl mb-6">Профессиональный SPA и массаж у вас на дому</p>
       <button data-target="#services" class="nav-btn">Узнать больше</button>
     </div>
-    <!-- Curved background bottom -->
     <svg class="wave bottom-0 rotate-180" viewBox="0 0 1440 100"><path fill="#264653" d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path></svg>
   </section>
 
-  <!-- Services Section -->
   <section id="services" class="bg-dark py-16" data-aos="fade-left">
     <h2 class="text-4xl md:text-5xl text-secondary mb-8 relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-24 after:h-1 after:bg-primary">Наши услуги</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-      <!-- Service Card Example -->
       <div class="service-card bg-white text-dark rounded-xl shadow-lg overflow-hidden transform transition hover:scale-105" data-aos="zoom-in">
         <img loading="lazy" src="img/service-swedish.jpg" alt="Шведский массаж" class="w-full h-48 object-cover">
         <div class="p-6">
@@ -67,36 +138,34 @@
           <p>Снимает мышечное напряжение и улучшает кровообращение.</p>
         </div>
       </div>
-      <!-- Repeat cards... -->
     </div>
   </section>
 
-  <!-- 3D Spline Embed -->
   <section class="py-16 bg-gray-800" data-aos="fade-up">
+    <!-- 3D Scene Embed: замените URL на свой рабочий Spline Embed -->
     <div class="w-full max-w-4xl mx-auto">
-      <iframe src="https://prod.spline.design/your-scene/scene.splinecode" frameborder="0" width="100%" height="500px"></iframe>
+      <iframe src="https://prod.spline.design/your-valid-scene/scene.splinecode" frameborder="0" width="100%" height="500px"></iframe>
     </div>
   </section>
 
-  <!-- Lottie Animation Example -->
   <section class="py-16 bg-dark" data-aos="fade-up">
-    <lottie-player src="https://assets.lottiefiles.com/animations/lf30_editor_abcdefgh.json" background="transparent" speed="1" loop autoplay style="width:300px; height:300px;"></lottie-player>
+    <!-- Lottie Animation: убедитесь, что ссылка доступна -->
+    <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_x62chJ.json" background="transparent" speed="1" loop autoplay style="width:300px; height:300px;"></lottie-player>
   </section>
 
-  <!-- Contact / Booking Form -->
   <section id="contact" class="py-16 bg-gradient-to-br from-primary to-accent text-gray-800" data-aos="fade-right">
     <h2 class="text-3xl mb-6 text-white text-center">Записаться сейчас</h2>
     <form id="bookingForm" class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg" novalidate>
       <div class="mb-4">
-        <label class="block mb-2" for="name">Имя</label>
+        <label for="name" class="block mb-2">Имя</label>
         <input id="name" name="name" type="text" placeholder="Ваше имя" class="w-full p-3 border rounded" required>
       </div>
       <div class="mb-4">
-        <label class="block mb-2" for="phone">Телефон</label>
+        <label for="phoneInput" class="block mb-2">Телефон</label>
         <input id="phoneInput" name="phone" type="tel" placeholder="+7 (___) ___-__-__" class="w-full p-3 border rounded" required>
       </div>
       <div class="mb-4">
-        <label class="block mb-2" for="message">Комментарий</label>
+        <label for="message" class="block mb-2">Комментарий</label>
         <textarea id="message" name="message" rows="4" placeholder="Комментарий (необязательно)" class="w-full p-3 border rounded"></textarea>
       </div>
       <button type="submit" class="w-full py-3 bg-secondary text-white font-bold rounded-full flex justify-center items-center">
@@ -108,11 +177,13 @@
   </section>
 
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-lP..." crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.8/inputmask.min.js" integrity="sha512-..." crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Initialize AOS
       AOS.init({ duration: 800, once: true });
-      // Phone mask
+      // Apply phone mask
       Inputmask('+7 (999) 999-99-99').mask(document.getElementById('phoneInput'));
 
       const BOT_TOKEN = 'YOUR_TOKEN';
@@ -122,11 +193,9 @@
       const spinner = document.getElementById('spinner');
       const statusMsg = document.getElementById('statusMsg');
 
-      // Nav toggle
       document.getElementById('navToggle').addEventListener('click', () => {
         document.getElementById('navList').classList.toggle('open');
       });
-      // Nav scroll & active
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -134,7 +203,7 @@
           document.querySelector(btn.dataset.target)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
       });
-      // IntersectionObserver
+
       new IntersectionObserver(entries => {
         entries.forEach(entry => {
           const btn = document.querySelector(`.nav-btn[data-target="#${entry.target.id}"]`);
@@ -142,7 +211,6 @@
         });
       }, { threshold: 0.6 }).observe(document.querySelectorAll('section'));
 
-      // Validation
       function validate(data) {
         const name = data.get('name').trim();
         const phone = data.get('phone').replace(/\D/g, '');
@@ -156,7 +224,7 @@
       form.addEventListener('submit', async e => {
         e.preventDefault();
         statusMsg.textContent = '';
-        [ 'name','phoneInput','message' ].forEach(id => document.getElementById(id).classList.remove('error'));
+        ['name','phoneInput','message'].forEach(id => document.getElementById(id).classList.remove('error'));
         btnText.textContent = '';
         spinner.classList.remove('hidden');
         form.querySelector('button').disabled = true;
@@ -166,16 +234,21 @@
         if (err) {
           const fld = document.getElementById(err.field);
           fld.classList.add('error'); fld.focus();
-          statusMsg.textContent = err.text; statusMsg.classList.add('text-red-500');
+          statusMsg.textContent = err.text;
+          statusMsg.classList.add('text-red-500');
           spinner.classList.add('hidden'); btnText.textContent = 'Отправить заявку';
           form.querySelector('button').disabled = false;
           return;
         }
 
-        const text = `📩 *Новая заявка*:\n👤 ${data.get('name')}\n📞 ${data.get('phone')}\n💬 ${data.get('message')||'-'}`;
+        const text = `📩 *Новая заявка*:
+👤 ${data.get('name')}
+📞 ${data.get('phone')}
+💬 ${data.get('message')||'-'}`;
         try {
           const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method:'POST', headers:{'Content-Type':'application/json'},
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: 'Markdown' })
           });
           const json = await res.json();
