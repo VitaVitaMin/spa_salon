@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SPA Massage & SPA — Запись</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.0/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-gray-900 text-gray-100">
+  <!-- Header -->
+  <header>…</header>
+
+  <main class="py-16">
+    <h2 class="text-3xl text-center text-teal-300 mb-8">Записаться сейчас</h2>
+    <form id="bookingForm" class="max-w-md mx-auto bg-gray-800 p-8 rounded-2xl shadow-lg"
+          novalidate>
+      <div class="mb-4">
+        <label for="name" class="block mb-1">Имя</label>
+        <input id="name" name="name" type="text" autocomplete="name"
+               class="w-full p-3 rounded-lg bg-gray-700 focus:ring-2 focus:ring-teal-400"
+               placeholder="Ваше имя" required>
+      </div>
+      <div class="mb-4">
+        <label for="phone" class="block mb-1">Телефон</label>
+        <input id="phone" name="phone" type="tel" autocomplete="tel"
+               class="w-full p-3 rounded-lg bg-gray-700 focus:ring-2 focus:ring-teal-400"
+               placeholder="+7 (___) ___-__-__" required>
+      </div>
+      <div class="mb-4">
+        <label for="message" class="block mb-1">Комментарий</label>
+        <textarea id="message" name="message" rows="4"
+                  class="w-full p-3 rounded-lg bg-gray-700 focus:ring-2 focus:ring-teal-400"
+                  placeholder="Комментарий (необязательно)"></textarea>
+      </div>
+      <button type="submit"
+              class="w-full py-3 font-semibold rounded-full bg-gradient-to-r from-teal-400 to-yellow-400 
+                     flex justify-center items-center disabled:opacity-50">
+        <span id="btnText">Отправить заявку</span>
+        <svg id="spinner" class="w-5 h-5 ml-2 animate-spin hidden" xmlns="http://www.w3.org/2000/svg"
+             fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10"
+             stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+        </svg>
+      </button>
+      <p id="statusMsg" class="mt-4 text-center min-h-[1.5rem]" aria-live="polite"></p>
+    </form>
+  </main>
+
+  <script src="scripts/main.js"></script>
+  <script src="scripts/telegram.js"></script>
+</body>
+</html>
