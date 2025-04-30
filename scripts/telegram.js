@@ -14,7 +14,7 @@ async function loadToken() {
 
 export async function sendTelegram({ name, phone, message }) {
   const BOT_TOKEN = await loadToken();
-  const CHAT_ID   = '<ваш_зашифрованный_CHAT_ID>'; // сюда подставьте ваш base64
+  const CHAT_ID   = 'MTQ1OTU5MjA4MA=='; // сюда подставьте ваш base64
   const text = `📩 *Новая заявка*:\n👤 ${name}\n📞 ${phone}\n💬 ${message}`;
   const payload = { chat_id: atob(CHAT_ID), text, parse_mode: 'Markdown' };
   const resp = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
