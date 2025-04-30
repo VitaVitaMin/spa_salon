@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.25" />
   <title>Премиум массаж</title>
   <style>
     :root {
@@ -12,49 +12,190 @@
       --divider: rgba(0,0,0,0.15);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 80px; font-size: 100%; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: #111; line-height: 1.6; text-align: center; }
-    header { position: sticky; top: 0; background: var(--light); box-shadow: 0 0.05rem 0.2rem rgba(0,0,0,0.1); z-index: 100; }
-    header .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0.75rem 0; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-size: 1.25rem; font-weight: 600; color: var(--accent); text-decoration: none; }
-    nav ul { display: flex; gap: 1rem; list-style: none; }
-    nav ul a { padding: 0.3rem 0.8rem; font-size: 0.9rem; color: inherit; text-decoration: none; border-radius: 0.5rem; transition: background 0.3s, transform 0.1s; }
+    html, body {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: #111;
+      line-height: 1.6;
+      height: 100%;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+    body > section {
+      scroll-snap-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem 1rem;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--light);
+      box-shadow: 0 0.05rem 0.2rem rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+    header .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.75rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    nav ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+    }
+    nav ul a {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.9rem;
+      color: inherit;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      transition: background 0.3s, transform 0.1s;
+    }
     nav ul a:hover { background: rgba(191,163,122,0.2); }
     nav ul a:active { transform: scale(0.95); }
-    #hero { position: relative; height: 80vh; background: url('img/hero.jpg') center/cover no-repeat; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-    #hero::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); pointer-events: none; }
-    .hero-content { position: relative; z-index: 10; max-width: 90%; color: #fff; }
+
+    #hero {
+      background: url('img/hero.jpg') center/cover no-repeat;
+      position: relative;
+      height: 100vh;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 90%;
+    }
     .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; }
     .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; }
     .hero-buttons { display: flex; gap: 1rem; justify-content: center; }
-    .hero-buttons .btn { background: var(--accent); color: var(--light); border: none; padding: 1.5vw 3vw; border-radius: 2rem; cursor: pointer; transition: transform 0.2s; z-index: 20; }
+    .hero-buttons .btn {
+      background: var(--accent);
+      color: var(--light);
+      border: none;
+      padding: 1.5vw 3vw;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
     .hero-buttons .btn:hover { transform: translateY(-0.3rem); }
     .hero-buttons .btn:active { transform: scale(0.95); }
-    #services { position: relative; background: var(--bg); }
-    #services::before { content: ''; position: absolute; top: -100px; left: 0; right: 0; height: 100px; background: linear-gradient(to bottom, rgba(247,242,235,0) 0%, rgba(247,242,235,1) 100%); pointer-events: none; z-index: 1; }
-    #services .container { padding-top: 0; width: 90%; max-width: 1200px; margin: 0 auto; }
-    #services h2 { margin-bottom: 1rem; }
-    .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2vw; }
-    .card { flex: 1 1 280px; max-width: 350px; background: var(--light); border-radius: 1rem; box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,0.1); padding: 1.5rem; text-align: center; transition: transform 0.3s; z-index: 2; }
+
+    #services h2, #info h2, #booking h2, #contact h2 { margin-bottom: 1rem; }
+    #services .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2vw;
+      margin-top: 1rem;
+      max-width: 1200px;
+      width: 100%;
+    }
+    .card {
+      flex: 1 1 280px;
+      max-width: 350px;
+      background: var(--light);
+      border-radius: 1rem;
+      box-shadow: 0 0.1rem 0.4rem rgba(0,0,0,0.1);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.3s;
+    }
     .card:hover { transform: translateY(-0.5rem); }
-    .card img { width: 100%; border-radius: 0.75rem; margin-bottom: 1rem; }
-    #booking { background: var(--bg); padding: 2rem 0; }
-    #booking .container { width: 90%; max-width: 500px; margin: 0 auto; }
-    #booking h2 { margin-bottom: 1rem; }
-    form { display: grid; gap: 1rem; }
-    input, select, textarea { width: 100%; padding: 1rem; border: 1px solid #ccc; border-radius: 0.5rem; font-size: 1rem; }
-    #booking .btn { background: var(--accent); color: var(--light); border: none; padding: 1rem; border-radius: 1.5rem; cursor: pointer; transition: transform 0.2s; }
+    .card img {
+      width: 100%;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    #info .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2vw;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    #booking form {
+      display: grid;
+      gap: 1rem;
+      max-width: 500px;
+      width: 100%;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+    #booking .btn {
+      background: var(--accent);
+      color: var(--light);
+      border: none;
+      padding: 1rem;
+      border-radius: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
     #booking .btn:hover { transform: translateY(-0.2rem); }
     #booking .btn:active { transform: scale(0.95); }
-    #contact { background: var(--bg); padding: 2rem 0; }
-    #contact .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-    #contact h2 { margin-bottom: 1rem; }
-    #contact iframe { width: 100%; height: 350px; border: 0; border-radius: 0.75rem; }
-    section { opacity: 0; transform: translateY(1rem); transition: all 0.6s ease-out; min-height: 100vh; border-top: 1px solid var(--divider); padding: 2rem 0; }
-    section.visible { opacity: 1; transform: translateY(0); }
-    @media (max-width: 1024px) { .hero-content h1 { font-size: 2.5rem; } }
-    @media (max-width: 768px) { .hero-content h1 { font-size: 2rem; } .hero-content p { font-size: 1rem; } .hero-buttons .btn { padding: 2vw 4vw; } .grid { gap: 4vw; } }
-    @media (max-width: 480px) { .hero-content h1 { font-size: 1.6rem; } .card { flex: 1 1 100%; } }
+
+    #contact iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+      border-radius: 0.75rem;
+      max-width: 800px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--light);
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2rem; }
+      .hero-content p { font-size: 1rem; }
+      .hero-buttons .btn { padding: 2vw 4vw; }
+      #services .grid, #info .grid {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+      .card {
+        min-width: 80%;
+        flex: 0 0 auto;
+      }
+    }
   </style>
 </head>
 <body>
@@ -65,12 +206,14 @@
         <ul>
           <li><a href="#hero">🏠 Главная</a></li>
           <li><a href="#services">✨ Услуги</a></li>
+          <li><a href="#info">📖 О массаже</a></li>
           <li><a href="#booking">📅 Запись</a></li>
           <li><a href="#contact">📍 Контакты</a></li>
         </ul>
       </nav>
     </div>
   </header>
+
   <section id="hero">
     <div class="hero-content">
       <h1>🌟 Профессиональный массаж в центре города</h1>
@@ -81,76 +224,119 @@
       </div>
     </div>
   </section>
+
   <section id="services">
-    <div class="container">
-      <h2>✨ Наши услуги</h2>
-      <div class="grid"></div>
+    <h2>✨ Наши услуги</h2>
+    <div class="grid"></div>
+  </section>
+
+  <section id="info">
+    <h2>📖 О массаже</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>💪 Функции</h3>
+        <ul>
+          <li>Улучшает крово- и лимфообращение</li>
+          <li>Снимает мышечное напряжение и спазмы</li>
+          <li>Стимулирует обмен веществ и регенерацию тканей</li>
+          <li>Расслабляет нервную систему, снижает стресс</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>✅ Показания</h3>
+        <ul>
+          <li>Хронические боли в спине, шее, плечах</li>
+          <li>Мышечное напряжение после сидячей работы</li>
+          <li>Усталость, стресс, бессонница</li>
+          <li>Нарушения осанки и подготовка к физнагрузкам</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>⚠️ Противопоказания</h3>
+        <ul>
+          <li>Острые воспалительные процессы, лихорадка</li>
+          <li>Онкологические заболевания и тромбозы</li>
+          <li>Кожные инфекции, грыжи и внутренние кровотечения</li>
+          <li>Сердечно‑сосудистые патологии в острой стадии</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>🏆 Преимущества</h3>
+        <ul>
+          <li>Профессиональные техники от сертифицированных мастеров</li>
+          <li>Индивидуальный подход и подбор метода под вас</li>
+          <li>Безопасные эфирные масла и качественное оборудование</li>
+          <li>Гибкий график и онлайн‑запись без ожидания</li>
+        </ul>
+      </div>
     </div>
   </section>
+
   <section id="booking">
-    <div class="container">
-      <h2>📝 Запись на сеанс</h2>
-      <form id="bookingForm">
-        <input type="text" id="name" placeholder="👤 ФИО" required>
-        <input type="tel" id="phone" placeholder="📞 Телефон" required>
-        <select id="service" required>
-          <option value="">💆 Выберите услугу</option>
-        </select>
-        <input type="date" id="date" placeholder="📅 Выберите дату" required>
-        <input type="time" id="time" placeholder="⏰ Выберите время" required>
-        <textarea id="comment" rows="3" placeholder="💬 Комментарий"></textarea>
-        <button type="submit" class="btn">✉️ Отправить</button>
-        <p id="status"></p>
-      </form>
-    </div>
+    <h2>📝 Запись на сеанс</h2>
+    <form id="bookingForm">
+      <input type="text" id="name" placeholder="👤 ФИО" required />
+      <input type="tel" id="phone" placeholder="📞 Телефон" required />
+      <select id="service" required>
+        <option value="">💆 Выберите услугу</option>
+      </select>
+      <input type="date" id="date" placeholder="📅 Выберите дату" required />
+      <input type="time" id="time" placeholder="⏰ Выберите время" required />
+      <textarea id="comment" rows="3" placeholder="💬 Комментарий"></textarea>
+      <button type="submit" class="btn">✉️ Отправить</button>
+      <p id="status"></p>
+    </form>
   </section>
+
   <section id="contact">
-    <div class="container">
-      <h2>📍 Контакты</h2>
-      <p>г. Лениногорск</p>
-      <p>Телефон: +7 (999) 123-45-67</p>
-      <p>Telegram/WhatsApp: @massage_premium</p>
-      <iframe src="https://maps.google.com/maps?q=Leninogorsk,+Russia&z=13&output=embed" allowfullscreen loading="lazy"></iframe>
-    </div>
+    <h2>📍 Контакты</h2>
+    <p>г. Лениногорск</p>
+    <p>Телефон: +7 (999) 123-45-67</p>
+    <p>Telegram/WhatsApp: @massage_premium</p>
+    <iframe src="https://maps.google.com/maps?q=Leninogorsk,+Russia&z=13&output=embed" allowfullscreen loading="lazy"></iframe>
   </section>
+
   <footer>
     <p>© 2025 МассажПремиум</p>
   </footer>
+
   <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
     const services = [
-      { title:"Классический массаж", description:"Глубокое расслабление всех групп мышц.", image:"img/classical.jpg", duration:"60 мин", price:"3000 ₽" },
-      { title:"Расслабляющий", description:"Нежные движения для снятия стресса.", image:"img/relax.jpg", duration:"60 мин", price:"3200 ₽" },
-      { title:"Спортивный", description:"Подготовка и восстановление после нагрузок.", image:"img/sport.jpg", duration:"60 мин", price:"3500 ₽" },
-      { title:"Антицеллюлитный", description:"Улучшение микроциркуляции и рельефа кожи.", image:"img/anticell.jpg", duration:"60 мин", price:"3600 ₽" },
-      { title:"Массаж головы и шеи", description:"Снятие напряжения и улучшение кровообращения.", image:"img/head.jpg", duration:"45 мин", price:"2800 ₽" },
-      { title:"Ароматерапия", description:"Расслабление с помощью эфирных масел.", image:"img/aroma.jpg", duration:"60 мин", price:"3400 ₽" }
+      { title: "Классический массаж", description: "Глубокое расслабление всех групп мышц.", image: "img/classical.jpg", duration: "60 мин", price: "3000 ₽" },
+      { title: "Расслабляющий", description: "Нежные движения для снятия стресса.", image: "img/relax.jpg", duration: "60 мин", price: "3200 ₽" },
+      { title: "Пиявки", description: "Уменьшает воспалительные процессы и боль.", image: "img/sport.jpg", duration: "60 мин", price: "3500 ₽" },
+      { title: "Антицеллюлитный", description: "Улучшение микроциркуляции и рельефа кожи.", image: "img/anticell.jpg", duration: "60 мин", price: "3600 ₽" },
+      { title: "Массаж головы и шеи", description: "Снятие напряжения и улучшение кровообращения.", image: "img/head.jpg", duration: "45 мин", price: "2800 ₽" },
+      { title: "Ароматерапия", description: "Расслабление с помощью эфирных масел.", image: "img/aroma.jpg", duration: "60 мин", price: "3400 ₽" }
     ];
-    function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     document.addEventListener('DOMContentLoaded', () => {
       const grid = document.querySelector('#services .grid');
       const select = document.getElementById('service');
       services.forEach(s => {
-        const card = document.createElement('div'); card.className = 'card';
+        const card = document.createElement('div');
+        card.className = 'card';
         card.innerHTML = `
-          <img src="${s.image}" alt="${s.title}">
+          <img src="${s.image}" alt="${s.title}" loading="lazy">
           <h3>💆 ${s.title}</h3>
           <p>${s.description}</p>
           <p><strong>⏱ ${s.duration}</strong> / <strong>💰 ${s.price}</strong></p>
         `;
         grid.append(card);
-        const opt = document.createElement('option'); opt.value = s.title; opt.textContent = `💆 ${s.title}`; select.append(opt);
+        const opt = document.createElement('option'); opt.value = s.title; opt.textContent = `💆 ${s.title}`;
+        select.append(opt);
       });
       document.getElementById('date').min = new Date().toISOString().split('T')[0];
-      const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.5 });
-      document.querySelectorAll('section').forEach(s => observer.observe(s));
       document.getElementById('bookingForm').addEventListener('submit', async e => {
         e.preventDefault();
         const fullName = document.getElementById('name').value.trim();
-        const phone    = document.getElementById('phone').value.trim();
-        const service  = document.getElementById('service').value;
-        const date     = document.getElementById('date').value;
-        const time     = document.getElementById('time').value;
-        const comment  = document.getElementById('comment').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const service = document.getElementById('service').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const comment = document.getElementById('comment').value.trim();
         const message = `<b>Новая заявка на массаж</b>\n👤 <b>ФИО:</b> ${fullName}\n📞 <b>Телефон:</b> ${phone}\n💆‍♂️ <b>Услуга:</b> ${service}\n📅 <b>Дата:</b> ${date}\n⏰ <b>Время:</b> ${time}\n💬 <b>Комментарий:</b> ${comment}`;
         try {
           const res = await fetch('https://api.telegram.org/bot7577231841:AAFuxU7qKica-U5CVTl684kigyjuE92uzEg/sendMessage', {
@@ -159,10 +345,10 @@
           });
           const result = await res.json();
           const status = document.getElementById('status');
-          if (result.ok) { status.textContent = '✅ Заявка отправлена!'; e.target.reset(); }
-          else { status.textContent = `❌ Ошибка: ${result.error_code}`; console.error('Telegram API error', result.error_code, result.description); }
-        } catch (err) {
-          document.getElementById('status').textContent = '❌ Ошибка сети'; console.error(err);
+          status.textContent = result.ok ? '✅ Заявка отправлена!' : `❌ Ошибка: ${result.error_code}`;
+          if (result.ok) e.target.reset();
+        } catch {
+          document.getElementById('status').textContent = '❌ Ошибка сети';
         }
       });
     });
