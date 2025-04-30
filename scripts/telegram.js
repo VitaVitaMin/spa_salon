@@ -13,7 +13,7 @@ async function loadToken() {
 }
 
 export async function sendTelegram({ name, phone, message }) {
-  const BOT_TOKEN = await loadToken();
+  const BOT_TOKEN = '7577231841:AAFuxU7qKica-U5CVTl684kigyjuE92uzEg';
   const CHAT_ID   = 'MTQ1OTU5MjA4MA=='; // сюда подставьте ваш base64
   const text = `📩 *Новая заявка*:\n👤 ${name}\n📞 ${phone}\n💬 ${message}`;
   const payload = { chat_id: atob(CHAT_ID), text, parse_mode: 'Markdown' };
