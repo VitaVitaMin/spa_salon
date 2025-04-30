@@ -1,3 +1,5 @@
+// scripts/main.js
+
 import { services } from './service-config.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,7 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <img src="img/${svc.img}" alt="${svc.title}" loading="lazy">
         <div class="content">
           <h3 class="text-2xl mb-2">${svc.title}</h3>
-          <p>${svc.description}</p>
+          <p class="mb-2">${svc.description}</p>
+          <div class="flex justify-between items-center text-sm text-gray-600 mb-2">
+            <span>⏱ ${svc.duration}</span>
+            <span>💰 ${svc.price} ₽</span>
+          </div>
+          <button class="btn">Записаться</button>
         </div>`;
       cont.append(card);
     });
@@ -56,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
       form.querySelector('button').disabled = true;
 
       const data = new FormData(form);
-      // валидация
       const n = data.get('name').trim();
       const p = data.get('phone').replace(/\D/g,'');
       const m = data.get('message').trim();
@@ -81,8 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // TODO: заменить на ваш backend endpoint
-      const BOT_TOKEN = 'ENCRYPTED_TOKEN';
-      const CHAT_ID   = 'ENCRYPTED_CHAT_ID';
       const text = `📩 *Новая заявка*:\n👤 ${n}\n📞 ${data.get('phone')}\n💬 ${m || '-'}`;
       try {
         const res = await fetch(`/api/send`, {
