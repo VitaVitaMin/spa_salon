@@ -14,6 +14,8 @@
       scroll-behavior: smooth;
       overflow-y: scroll;
       scroll-snap-type: y mandatory;
+      /* Отступ для якорей */
+      scroll-padding-top: 80px;
     }
     :root {
       --bg: #f7f2eb;
@@ -127,7 +129,7 @@
     }
 
     iframe {
-      width:100%; height:300px;
+      width:100%; height:350px;
       border:0; border-radius:12px;
       margin-top:1rem;
     }
@@ -146,12 +148,12 @@
   <header>
     <div class="container">
       <nav>
-        <a href="#hero" class="logo">МассажПремиум</a>
+        <a href="#hero" class="logo">💆‍♀️ МассажПремиум</a>
         <ul>
-          <li><a href="#hero">Главная</a></li>
-          <li><a href="#services">Услуги</a></li>
-          <li><a href="#booking">Запись</a></li>
-          <li><a href="#contact">Контакты</a></li>
+          <li><a href="#hero">🏠 Главная</a></li>
+          <li><a href="#services">✨ Услуги</a></li>
+          <li><a href="#booking">📅 Запись</a></li>
+          <li><a href="#contact">📍 Контакты</a></li>
         </ul>
       </nav>
     </div>
@@ -159,51 +161,39 @@
 
   <section id="hero">
     <div class="hero-content">
-      <h1>Профессиональный массаж в центре города</h1>
+      <h1>🌟 Профессиональный массаж в центре города</h1>
       <p>Расслабьтесь. Восстановитесь. Почувствуйте себя лучше.</p>
-      <button class="btn" onclick="scrollToSection('services')">Услуги</button>
-      <button class="btn" onclick="scrollToSection('booking')">Записаться</button>
+      <button class="btn" onclick="scrollToSection('services')">✨ Услуги</button>
+      <button class="btn" onclick="scrollToSection('booking')">📅 Записаться</button>
     </div>
   </section>
 
   <section id="services" class="container">
-    <h2>Наши услуги</h2>
+    <h2>✨ Наши услуги</h2>
     <div class="grid"></div>
   </section>
 
-  <!-- Встроенные данные услуг -->
-  <script id="services-data" type="application/json">
-  [
-    {"title":"Классический массаж","description":"Глубокое расслабление всех групп мышц.","image":"img/classical.jpg","duration":"60 мин","price":"3000₽"},
-    {"title":"Расслабляющий","description":"Нежные движения для снятия стресса.","image":"img/relax.jpg","duration":"60 мин","price":"3200₽"},
-    {"title":"Спортивный","description":"Подготовка и восстановление после физнагрузок.","image":"img/sport.jpg","duration":"60 мин","price":"3500₽"},
-    {"title":"Антицеллюлитный","description":"Улучшение микроциркуляции и рельефа кожи.","image":"img/anticell.jpg","duration":"60 мин","price":"3600₽"},
-    {"title":"Массаж головы и шеи","description":"Снятие напряжения и улучшение кровообращения.","image":"img/head.jpg","duration":"45 мин","price":"2800₽"},
-    {"title":"Ароматерапия","description":"Расслабление с помощью эфирных масел.","image":"img/aroma.jpg","duration":"60 мин","price":"3400₽"}
-  ]
-  </script>
-
   <section id="booking" class="container">
-    <h2>Запись на сеанс</h2>
+    <h2>📝 Запись на сеанс</h2>
     <form id="bookingForm">
-      <input type="text" id="name" placeholder="ФИО" required>
-      <input type="tel" id="phone" placeholder="Номер телефона" required>
-      <select id="service" required><option value="">Выберите услугу</option></select>
+      <input type="text" id="name" placeholder="👤 ФИО" required>
+      <input type="tel" id="phone" placeholder="📞 Номер телефона" required>
+      <select id="service" required><option value="">💆 Выберите услугу</option></select>
       <input type="date" id="date" min="" required>
       <input type="time" id="time" required>
-      <textarea id="comment" rows="3" placeholder="Комментарий"></textarea>
-      <button type="submit" class="btn">Отправить</button>
+      <textarea id="comment" rows="3" placeholder="💬 Комментарий"></textarea>
+      <button type="submit" class="btn">✉️ Отправить</button>
       <p id="status" style="margin-top:1rem;"></p>
     </form>
   </section>
 
   <section id="contact" class="container">
-    <h2>Контакты</h2>
-    <p>г. Москва, ул. Примерная, д. 10</p>
+    <h2>📍 Контакты</h2>
+    <p>г. Лениногорск</p>
     <p>Телефон: +7 (999) 123-45-67</p>
     <p>Telegram/WhatsApp: @massage_premium</p>
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.1374!2d37.6173!3d55.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a98bbfa0d2f3f1e!2z0JrQuNC70LjRhtGP!5e0!3m2!1sru!2sru!4v1682851200000!5m2!1sru!2sru"
+      src="https://maps.google.com/maps?q=Leninogorsk,+Russia&z=13&output=embed"
       allowfullscreen="" loading="lazy"></iframe>
   </section>
 
@@ -212,47 +202,93 @@
   </footer>
 
   <script>
-    // Рендер карточек услуг из встроенного JSON
-    const services = JSON.parse(document.getElementById('services-data').textContent);
-    const grid = document.querySelector('#services .grid');
-    const select = document.getElementById('service');
-    services.forEach(s => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <img src="${s.image}" alt="${s.title}">
-        <h3>${s.title}</h3>
-        <p>${s.description}</p>
-        <p><strong>${s.duration}</strong> / <strong>${s.price}</strong></p>
-      `;
-      grid.append(card);
-      const opt = document.createElement('option');
-      opt.textContent = s.title;
-      select.append(opt);
-    });
+    const services = [
+      { title:"Классический массаж", description:"Глубокое расслабление всех групп мышц.", image:"img/classical.jpg", duration:"60 мин", price:"3000₽" },
+      { title:"Расслабляющий",    description:"Нежные движения для снятия стресса.",      image:"img/relax.jpg",     duration:"60 мин", price:"3200₽" },
+      { title:"Спортивный",       description:"Подготовка и восстановление после нагрузок.",image:"img/sport.jpg",     duration:"60 мин", price:"3500₽" },
+      { title:"Антицеллюлитный",  description:"Улучшение микроциркуляции и рельефа кожи.", image:"img/anticell.jpg",  duration:"60 мин", price:"3600₽" },
+      { title:"Массаж головы и шеи",description:"Снятие напряжения и улучшение кровообращения.",image:"img/head.jpg",      duration:"45 мин", price:"2800₽" },
+      { title:"Ароматерапия",     description:"Расслабление с помощью эфирных масел.",       image:"img/aroma.jpg",     duration:"60 мин", price:"3400₽" }
+    ];
 
-    // Плавный скролл
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Ограничение даты
-    const dateInput = document.getElementById('date');
-    const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
+    document.addEventListener('DOMContentLoaded', () => {
+      // Рендерим услуги
+      const grid = document.querySelector('#services .grid');
+      const select = document.getElementById('service');
+      services.forEach(s => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${s.image}" alt="${s.title}">
+          <h3>💆 ${s.title}</h3>
+          <p>${s.description}</p>
+          <p><strong>⏱ ${s.duration}</strong> / <strong>💰 ${s.price}</strong></p>
+        `;
+        grid.append(card);
 
-    // Анимация секций
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('visible');
+        const opt = document.createElement('option');
+        opt.value = s.title;
+        opt.textContent = `💆 ${s.title}`;
+        select.append(opt);
       });
-    }, { threshold: 0.5 });
-    document.querySelectorAll('section').forEach(s => observer.observe(s));
 
-    // Заготовка отправки формы
-    document.getElementById('bookingForm').addEventListener('submit', e => {
-      e.preventDefault();
-      // ... отправка в Telegram API ...
+      // Ограничение даты
+      const dateInput = document.getElementById('date');
+      dateInput.min = new Date().toISOString().split('T')[0];
+
+      // Анимация секций
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+      // Обработка отправки формы
+      document.getElementById('bookingForm').addEventListener('submit', async e => {
+        e.preventDefault();
+        const fullName = document.getElementById('name').value.trim();
+        const phone    = document.getElementById('phone').value.trim();
+        const service  = document.getElementById('service').value;
+        const date     = document.getElementById('date').value;
+        const time     = document.getElementById('time').value;
+        const comment  = document.getElementById('comment').value.trim();
+
+        const message = `
+📩 *Новая заявка на массаж*
+
+👤 *ФИО:* ${fullName}
+📞 *Телефон:* ${phone}
+💆‍♂️ *Услуга:* ${service}
+📅 *Дата:* ${date}
+⏰ *Время:* ${time}
+💬 *Комментарий:* ${comment}
+        `.trim();
+
+        const res = await fetch('https://api.telegram.org/bot7577231841:AAFuxU7qKica-U5CVTl684kigyjuE92uzEg/sendMessage', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: '1459592080',
+            text: message,
+            parse_mode: 'MarkdownV2'
+          })
+        });
+
+        const result = await res.json();
+        const status = document.getElementById('status');
+        if (result.ok) {
+          status.textContent = '✅ Заявка отправлена!';
+          e.target.reset();
+        } else {
+          status.textContent = '❌ Ошибка при отправке.';
+          console.error(result);
+        }
+      });
     });
   </script>
 </body>
