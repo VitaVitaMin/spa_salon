@@ -52,16 +52,17 @@
       padding: .75rem 0;
     }
     .logo { font-size:1.25rem; font-weight:600; color:var(--accent); text-decoration:none; }
-    nav ul { display:flex; gap:1rem; list-style:none; }
+    nav ul { display:flex; gap:1rem; list-style:none; flex-wrap: wrap; }
     nav ul a {
       padding:.3rem .8rem; font-size:.9rem;
       color:inherit; text-decoration:none; border-radius:.5rem;
       transition:background .3s;
+      white-space: nowrap;
     }
     nav ul a:hover,
     nav ul a.active { background:var(--accent); color:#fff; }
 
-    /* Обновлённый HERO */
+    /* HERO */
     #hero {
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/hero.jpg') center/cover no-repeat;
       position: relative;
@@ -91,9 +92,9 @@
       flex-direction: column;
       align-items: center;
     }
-    .hero-content h1 { font-size:3rem; margin-bottom:1rem; }
-    .hero-content p { font-size:1.2rem; margin-bottom:2rem; }
-    .hero-buttons { display:flex; gap:1rem; }
+    .hero-content h1 { font-size: clamp(1.5rem, 5vw, 3rem); margin-bottom:1rem; }
+    .hero-content p { font-size: clamp(1rem, 3vw, 1.2rem); margin-bottom:2rem; }
+    .hero-buttons { display:flex; gap:1rem; flex-wrap: wrap; justify-content: center; }
     .btn {
       background:var(--accent); color:var(--light);
       border:none; padding:1rem 2rem;
@@ -101,7 +102,7 @@
       transition:transform .2s;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       font-weight:600;
-      font-size:1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
     }
     .hero-buttons .btn:hover { transform: translateY(-.2rem); }
     .grid {
@@ -114,6 +115,7 @@
       box-shadow:0 .1rem .4rem rgba(0,0,0,0.1);
       padding:1.5rem; text-align:center;
       flex:1 1 300px; transition:all .3s;
+      display: flex; flex-direction: column;
     }
     .card:hover {
       box-shadow:0 8px 20px rgba(0,0,0,0.15);
@@ -126,7 +128,7 @@
     }
     section > * { max-width:1100px; width:100%; }
     section h2 {
-      font-size:2rem; margin-bottom:1.5rem; text-align:center;
+      font-size: clamp(1.5rem, 4vw, 2rem); margin-bottom:1.5rem; text-align:center;
     }
     #booking form {
       display:flex; flex-direction:column;
@@ -149,17 +151,15 @@
     }
     footer { text-align:center; padding:1rem; background:var(--light); }
     @media (max-width:768px) {
-      nav ul { flex-wrap:wrap; }
-      .hero-content h1 { font-size:2.2rem; }
-      .hero-content p { font-size:1rem; }
+      nav ul { justify-content: center; }
       .grid { gap:.5rem; }
-      .card { flex:1 1 100%; }
+      .card { flex:1 1 45%; }
     }
     @media (max-width:480px) {
       html, body { scroll-snap-type:none; }
       body > section { margin-bottom:10px; padding:1rem; min-height:auto; }
-      .hero-content h1 { font-size:2rem; }
-      .hero-content p { font-size:.9rem; }
+      .grid { gap:.5rem; }
+      .card { flex:1 1 100%; }
       .hero-buttons { flex-direction:column; }
       .hero-buttons .btn { width:100%; }
       #booking form { max-width:100%; }
@@ -176,10 +176,8 @@
         <ul>
           <li><a href="#hero" class="nav-link">🏠 Главная</a></li>
           <li><a href="#services" class="nav-link">✨ Услуги</a></li>
-          <li><a href="#about" class="nav-link">ℹ️ О нас</a></li>
           <li><a href="#info" class="nav-link">📖 О массаже</a></li>
-          <li><a href="#reviews" class="nav-link">💬 Отзывы</a></li>
-          <li><a href="#faq" class="nav-link">❓ FAQ</a></li>
+          <li><a href="#certificates" class="nav-link">📜 Сертификаты</a></li>
           <li><a href="#booking" class="nav-link">📅 Запись</a></li>
           <li><a href="#contact" class="nav-link">📍 Контакты</a></li>
         </ul>
@@ -201,24 +199,6 @@
   <section id="services">
     <h2>✨ Наши услуги</h2>
     <div class="grid" id="servicesGrid"></div>
-  </section>
-
-  <section id="about">
-    <h2>🧘 О нас</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>🌿 Наша философия</h3>
-        <p>Мы верим в силу прикосновения и исцеляющую энергию массажа. Каждое прикосновение — шаг к вашему благополучию.</p>
-      </div>
-      <div class="card">
-        <h3>👨‍⚕️ Команда мастеров</h3>
-        <p>У нас работают только дипломированные специалисты с медицинским образованием и опытом от 5 лет.</p>
-      </div>
-      <div class="card">
-        <h3>🏅 Качество и забота</h3>
-        <p>Мы используем только сертифицированные масла и индивидуально подбираем технику под клиента.</p>
-      </div>
-    </div>
   </section>
 
   <section id="info">
@@ -259,38 +239,6 @@
           <li>Безопасные эфирные масла и качественное оборудование</li>
           <li>Гибкий график и онлайн-запись без ожидания</li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="reviews">
-    <h2>💬 Отзывы клиентов</h2>
-    <div class="grid">
-      <div class="card">
-        <p>"Лучший массаж в моей жизни! После сеанса почувствовала себя как заново родившаяся."</p>
-        <p><strong>— Анастасия, 32 года</strong></p>
-      </div>
-      <div class="card">
-        <p>"Очень приятный интерьер, внимательный мастер и ощущение спокойствия после каждой процедуры."</p>
-        <p><strong>— Сергей, 41 год</strong></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq">
-    <h2>❓ Часто задаваемые вопросы</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Сколько длится сеанс?</h3>
-        <p>Стандартный сеанс длится 60 минут, но возможны и другие форматы — уточняйте при записи.</p>
-      </div>
-      <div class="card">
-        <h3>Что нужно брать с собой?</h3>
-        <p>Ничего! Мы предоставляем всё необходимое: одноразовые простыни, полотенца и масла.</p>
-      </div>
-      <div class="card">
-        <h3>Можно ли записаться в выходные?</h3>
-        <p>Да, мы работаем ежедневно, включая выходные. Подберем удобное для вас время.</p>
       </div>
     </div>
   </section>
@@ -350,7 +298,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Services population
+      // Данные услуг
       const services = [
         { title: "Классический массаж", description: "Глубокое расслабление всех групп мышц.", image: "img/classical.jpg", duration: "60 мин", price: "3000 ₽" },
         { title: "Расслабляющий", description: "Нежные движения для снятия стресса.", image: "img/relax.jpg", duration: "60 мин", price: "3200 ₽" },
@@ -359,8 +307,11 @@
         { title: "Массаж головы и шеи", description: "Снятие напряжения и улучшение кровообращения.", image: "img/head.jpg", duration: "45 мин", price: "2800 ₽" },
         { title: "Ароматерапия", description: "Расслабление с помощью эфирных масел.", image: "img/aroma.jpg", duration: "60 мин", price: "3400 ₽" }
       ];
+
       const grid = document.getElementById('servicesGrid');
       const select = document.getElementById('service');
+
+      // Генерация карточек и опций
       services.forEach(s => {
         const card = document.createElement('div');
         card.className = 'card';
@@ -371,16 +322,17 @@
           <p><strong>⏱ ${s.duration}</strong> / <strong>💰 ${s.price}</strong></p>
         `;
         grid.append(card);
+
         const opt = document.createElement('option');
         opt.value = s.title;
-        opt.textContent = `💆 ${s.title}`;
+        opt.textContent = `💆 ${s.title} — ${s.price}`;
         select.append(opt);
       });
 
-      // Min date for booking
+      // Минимальная дата — сегодня
       document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-      // Telegram form submit
+      // Отправка через Telegram Bot API
       document.getElementById('bookingForm').addEventListener('submit', async e => {
         e.preventDefault();
         const fullName = document.getElementById('name').value.trim();
@@ -397,25 +349,26 @@
             body: JSON.stringify({ chat_id: '1459592080', text: message, parse_mode: 'HTML' })
           });
           const result = await res.json();
-          const status = document.getElementById('status');
-          status.textContent = result.ok ? '✅ Заявка отправлена!' : `❌ Ошибка: ${result.error_code}`;
+          document.getElementById('status').textContent = result.ok ? '✅ Заявка отправлена!' : `❌ Ошибка: ${result.error_code}`;
           if (result.ok) e.target.reset();
         } catch {
           document.getElementById('status').textContent = '❌ Ошибка сети';
         }
       });
 
-      // Intersection Observer for sections
+      // Появление секций при скролле
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) entry.target.classList.add('visible');
         });
       }, { threshold: 0.1 });
-      document.querySelectorAll('section').forEach(sec => observer.observe(sec));
+      document.querySelectorAll('body > section').forEach(sec => observer.observe(sec));
 
-      // Active nav link on scroll
+      // Активная ссылка навигации
       const navLinks = document.querySelectorAll('.nav-link');
-      const sections = Array.from(navLinks).map(link => document.querySelector(link.getAttribute('href')));
+      const sections = Array.from(navLinks).map(link =>
+        document.querySelector(link.getAttribute('href'))
+      );
       window.addEventListener('scroll', () => {
         const fromTop = window.scrollY + 90;
         navLinks.forEach((link, i) => {
