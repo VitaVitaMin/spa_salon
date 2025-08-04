@@ -343,7 +343,7 @@
         const comment = document.getElementById('comment').value.trim();
         const message = `<b>Новая заявка на массаж</b>\n👤 <b>ФИО:</b> ${fullName}\n📞 <b>Телефон:</b> ${phone}\n💆‍♂️ <b>Услуга:</b> ${service}\n📅 <b>Дата:</b> ${date}\n⏰ <b>Время:</b> ${time}\n💬 <b>Комментарий:</b> ${comment}`;
         try {
-          const res = await fetch('https://api.telegram.org/bot7577231841:AAFuxU7qKica-U5CVTl684kigyjuE92uzEg/sendMessage', {
+          const res = await fetch('https://api.telegram.org/bot7250877224:AAGSgNVc3dOc7asgpNzCRFLzM42SYn3HCsI/sendMessage', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ chat_id: '1459592080', text: message, parse_mode: 'HTML' })
@@ -384,3 +384,4 @@
   </script>
 </body>
 </html>
+
