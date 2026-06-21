@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Премиум массаж</title>
+  <title>Аппаратный массаж FOHOW</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -115,6 +115,8 @@
       text-align: center;
       color: var(--text-main);
       font-weight: 800;
+      width: 100%;
+      max-width: 1200px;
     }
 
     #hero {
@@ -134,8 +136,8 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url('img/hero.jpg') center/cover no-repeat;
-      opacity: 0.5;
+      background: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      opacity: 0.4;
       z-index: 0;
     }
 
@@ -241,6 +243,7 @@
       font-size: 1.4rem;
       margin-bottom: 1rem;
       color: var(--text-main);
+      font-weight: 800;
     }
 
     .card p {
@@ -262,6 +265,8 @@
 
     ul.features {
       list-style: none;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
     }
 
     ul.features li {
@@ -269,6 +274,7 @@
       padding-left: 1.5rem;
       margin-bottom: 0.8rem;
       color: var(--text-muted);
+      font-size: 0.95rem;
     }
 
     ul.features li::before {
@@ -329,10 +335,6 @@
       text-align: center;
       font-weight: 600;
       min-height: 24px;
-    }
-
-    #contact {
-      background: var(--surface);
     }
 
     .contact-wrapper {
@@ -408,14 +410,13 @@
 
   <header>
     <div class="container">
-      <a href="#hero" class="logo">МассажПремиум</a>
+      <a href="#hero" class="logo">FOHOW Центр</a>
       <nav>
         <ul>
           <li><a href="#hero" class="nav-link">Главная</a></li>
-          <li><a href="#services" class="nav-link">Услуги</a></li>
-          <li><a href="#info" class="nav-link">О массаже</a></li>
+          <li><a href="#services" class="nav-link">Оборудование</a></li>
+          <li><a href="#info" class="nav-link">Показания</a></li>
           <li><a href="#booking" class="nav-link">Запись</a></li>
-          <li><a href="#contact" class="nav-link">Контакты</a></li>
         </ul>
       </nav>
     </div>
@@ -423,55 +424,55 @@
 
   <section id="hero">
     <div class="hero-content">
-      <h1>Профессиональный массаж в центре города</h1>
-      <p>Снимите стресс, восстановите энергию и почувствуйте легкость в каждом движении благодаря индивидуальному подходу.</p>
+      <h1>Инновационные технологии FOHOW</h1>
+      <p>Оздоровительные приборы для коррекции фигуры, расслабления мышц и улучшения качества жизни.</p>
       <div class="hero-buttons">
-        <a href="#services" class="btn btn-outline">Смотреть услуги</a>
-        <a href="#booking" class="btn">Записаться онлайн</a>
+        <a href="#services" class="btn btn-outline">Наши приборы</a>
+        <a href="#booking" class="btn">Записаться на сеанс</a>
       </div>
     </div>
   </section>
 
   <section id="services" class="fade-in">
-    <h2>Наши услуги</h2>
+    <h2>Оздоровительное оборудование</h2>
     <div class="grid" id="servicesGrid"></div>
   </section>
 
   <section id="info" class="fade-in">
-    <h2>Все о процедурах</h2>
+    <h2>Основные функции приборов FOHOW</h2>
     <div class="grid">
       <div class="card">
-        <h3>Эффект</h3>
+        <h3>Действие на организм</h3>
         <ul class="features">
-          <li>Улучшает крово- и лимфообращение</li>
-          <li>Снимает мышечное напряжение и спазмы</li>
-          <li>Стимулирует обмен веществ</li>
-          <li>Нормализует сон и снижает стресс</li>
+          <li>Улучшение кровообращения и ускорение метаболизма</li>
+          <li>Регуляция работы нервной и пищеварительной систем</li>
+          <li>Снятие мышечных спазмов и избавление от болей</li>
+          <li>Уменьшение отеков и выведение лишней жидкости</li>
         </ul>
       </div>
       <div class="card">
-        <h3>Показания</h3>
+        <h3>Показания к применению</h3>
         <ul class="features">
-          <li>Боли в спине, шее, пояснице</li>
-          <li>Малоподвижный образ жизни</li>
-          <li>Хроническая усталость</li>
-          <li>Восстановление после нагрузок</li>
+          <li>Хроническая усталость и быстрое переутомление</li>
+          <li>Стрессовые ситуации, бессонница, плохое качество сна</li>
+          <li>Предболезненные состояния и снижение иммунитета</li>
+          <li>Необходимость коррекции фигуры и избавления от лишнего веса</li>
         </ul>
       </div>
       <div class="card">
-        <h3>Противопоказания</h3>
+        <h3>Эффект после сеансов</h3>
         <ul class="features">
-          <li>Острые воспаления и температура</li>
-          <li>Онкологические заболевания</li>
-          <li>Тромбозы и болезни крови</li>
-          <li>Кожные высыпания в зоне массажа</li>
+          <li>Повышение энергии и регенерация на клеточном уровне</li>
+          <li>Естественное выравнивание осанки через снятие блоков</li>
+          <li>Ощущение легкости в теле и свобода движений</li>
+          <li>Косметический эффект: упругая и свежая кожа</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="booking" class="fade-in">
-    <h2>Запись на сеанс</h2>
+    <h2>Запись на процедуру</h2>
     <form id="bookingForm">
       <div class="input-group">
         <label for="name">Ваше имя</label>
@@ -484,7 +485,7 @@
       </div>
 
       <div class="input-group">
-        <label for="service">Выберите услугу</label>
+        <label for="service">Выберите процедуру</label>
         <select id="service" required>
           <option value="" disabled selected>— Выберите из списка —</option>
         </select>
@@ -503,39 +504,45 @@
 
       <div class="input-group">
         <label for="comment">Пожелания</label>
-        <textarea id="comment" rows="3" placeholder="Укажите, если есть особые предпочтения или противопоказания"></textarea>
+        <textarea id="comment" rows="3" placeholder="Укажите, если есть особые предпочтения"></textarea>
       </div>
 
-      <button type="submit" class="btn">Отправить заявку</button>
+      <button type="submit" class="btn">Записаться</button>
       <p id="status"></p>
     </form>
   </section>
 
-  <section id="contact" class="fade-in">
-    <h2>Как нас найти</h2>
-    <div class="contact-wrapper">
-      <div class="contact-info">
-        <p>📍 г. Лениногорск, Центральная ул., 1</p>
-        <p>📞 +7 (999) 123-45-67</p>
-        <p>💬 Telegram / WhatsApp: @massage_premium</p>
-        <p>🕒 Пн–Вс: 09:00 – 21:00</p>
-      </div>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1134.12345!2d52.4567!3d54.598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sru!2sru!4v1620000000000!5m2!1sru!2sru" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-  </section>
-
   <footer>
-    <p>© 2026 МассажПремиум. Все права защищены.</p>
+    <p>© 2026 Представительство Компании FOHOW. Все права защищены.</p>
+    <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">Имеются противопоказания. Необходима консультация специалиста.</p>
   </footer>
 
   <script>
     const services = [
-      { title: "Классический массаж", description: "Глубокая проработка мышц, устранение зажимов и улучшение общего тонуса.", image: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", duration: "60 мин", price: "3000 ₽" },
-      { title: "Расслабляющий", description: "Мягкие техники для снятия эмоционального и физического напряжения.", image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", duration: "60 мин", price: "3200 ₽" },
-      { title: "Спортивный", description: "Интенсивное воздействие для восстановления после физических нагрузок.", image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", duration: "60 мин", price: "3500 ₽" },
-      { title: "Антицеллюлитный", description: "Лимфодренажные техники для улучшения рельефа кожи и микроциркуляции.", image: "https://images.unsplash.com/photo-1552693673-1bf958298935?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", duration: "60 мин", price: "3600 ₽" },
-      { title: "Массаж ШВЗ", description: "Снятие напряжения в шейно-воротниковой зоне, профилактика головных болей.", image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", duration: "45 мин", price: "2800 ₽" },
-      { title: "Ароматерапия", description: "Полное расслабление с использованием натуральных эфирных масел.", image: "https://images.unsplash.com/photo-1608280731043-a0e238cb05d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", duration: "60 мин", price: "3400 ₽" }
+      { 
+        title: "Термокапсула FOHOW", 
+        description: "Глубокий прогрев активизирует лимфодренаж. Снимает напряжение, уменьшает отечность и ускоряет обмен веществ.", 
+        image: "https://images.unsplash.com/photo-1519824145371-29681b328e11?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+        features: ["Выведение лишней жидкости", "Упругая кожа", "Прилив энергии"]
+      },
+      { 
+        title: "Биоэнергомассажер (БЭМ)", 
+        description: "Запускает естественное движение мышц, снимает блоки, выравнивает осанку и избавляет от скованности.", 
+        image: "https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+        features: ["Коррекция осанки", "Устранение болей", "Снятие зажимов"]
+      },
+      { 
+        title: "Энергетический массажер РЭМ", 
+        description: "Комплекс из массажера и графеновых обхватов для шейно-плечевого пояса и поясницы. Улучшает сон и стабилизирует нервную систему.", 
+        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+        features: ["Коррекция фигуры", "Улучшение сна", "Снятие спазмов"]
+      },
+      { 
+        title: "Ультразвуковая насадка", 
+        description: "Глубокий массаж лица и тела с частотой 1 МГц. Повышает клеточную активность и нормализует обмен веществ.", 
+        image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+        features: ["Активизация клеток", "Глубокий прогрев", "Косметический эффект"]
+      }
     ];
 
     const grid = document.getElementById('servicesGrid');
@@ -544,20 +551,22 @@
     services.forEach(s => {
       const card = document.createElement('div');
       card.className = 'card';
+      
+      const featuresHtml = s.features.map(f => `<li>${f}</li>`).join('');
+
       card.innerHTML = `
         <img src="${s.image}" alt="${s.title}" loading="lazy">
         <h3>${s.title}</h3>
         <p>${s.description}</p>
-        <div class="price-row">
-          <span>⏱ ${s.duration}</span>
-          <span style="color: var(--accent); font-size: 1.1rem;">${s.price}</span>
-        </div>
+        <ul class="features">
+          ${featuresHtml}
+        </ul>
       `;
       grid.appendChild(card);
 
       const opt = document.createElement('option');
       opt.value = s.title;
-      opt.textContent = `${s.title} — ${s.price}`;
+      opt.textContent = s.title;
       select.appendChild(opt);
     });
 
@@ -577,14 +586,14 @@
         comment: document.getElementById('comment').value.trim()
       };
 
-      const message = `Новая заявка\nИмя: ${formElements.name}\nТелефон: ${formElements.phone}\nУслуга: ${formElements.service}\nДата: ${formElements.date}\nВремя: ${formElements.time}\nКоммент: ${formElements.comment || 'Нет'}`;
+      const message = `Новая заявка FOHOW\nИмя: ${formElements.name}\nТелефон: ${formElements.phone}\nУслуга: ${formElements.service}\nДата: ${formElements.date}\nВремя: ${formElements.time}\nКоммент: ${formElements.comment || 'Нет'}`;
       
       const statusEl = document.getElementById('status');
       statusEl.style.color = 'var(--text-main)';
       statusEl.textContent = 'Отправка...';
 
       const botToken = 'YOUR_BOT_TOKEN_HERE'; 
-      const chatId = '1459592080';
+      const chatId = 'YOUR_CHAT_ID_HERE';
 
       try {
         const res = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
